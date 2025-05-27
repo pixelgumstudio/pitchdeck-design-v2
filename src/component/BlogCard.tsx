@@ -33,7 +33,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
     <div className="h-fit tablet:pb-[80px] laptop:pb-0">
       <LoadImage
         src={image}
-        style={`mb-6 w-full h-full max-h-[342px]`}
+        style={`mb-6 w-full h-[342px]`}
         alt={title}
       />
       {showDate && title && (

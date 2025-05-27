@@ -2,7 +2,6 @@
 import { useParams, useRouter } from "next/navigation";
 import { websiteLinks } from "../../../lib/links";
 import { createSlug } from "../../../component/slug";
-import Arrow from "../assets/back.svg";
 import Image from "next/image";
 
 type WebsiteLink = {
@@ -30,7 +29,7 @@ const PageFile: React.FC = () => {
           onClick={() => router.back()}
           type="button"
         >
-          <Image src={Arrow} alt="back button" width={24} height={24} className="" />
+          <Image src={"/assets/back.svg"} alt="back button" width={24} height={24} className="" />
         </button>
       </div>
 

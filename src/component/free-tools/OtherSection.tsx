@@ -1,7 +1,4 @@
 import React from "react";
-import Terms from "../../assets/terms.svg";
-import Policy from "../../assets/privacy.svg";
-import Refund from "../../assets/refund.svg";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -50,18 +47,18 @@ const OtherSection: React.FC<OtherSectionProps> = ({ page }) => {
         <div className="mt-[60px] flex flex-col gap-6 laptop:flex-row laptop:justify-between">
           {page === "policy" ? (
             <>
-              <Cards img={Refund} title="Refund policy" link="refund" />
-              <Cards img={Terms} title="Terms and conditions" link="terms" />
+              <Cards img={"/assets/refund.svg"} title="Refund policy" link="refund" />
+              <Cards img={"/assets/terms.svg"} title="Terms and conditions" link="terms" />
             </>
           ) : page === "terms" ? (
             <>
-              <Cards img={Policy} title="Privacy policy" link="policy" />
-              <Cards img={Refund} title="Refund policy" link="refund" />
+              <Cards img={"/assets/privacy.svg"} title="Privacy policy" link="policy" />
+              <Cards img={"/assets/refund.svg"} title="Refund policy" link="refund" />
             </>
           ) : (
             <>
-              <Cards img={Policy} title="Privacy policy" link="policy" />
-              <Cards img={Terms} title="Terms and conditions" link="terms" />
+              <Cards img={"/assets/privacy.svg"} title="Privacy policy" link="policy" />
+              <Cards img={"/assets/terms.svg"} title="Terms and conditions" link="terms" />
             </>
           )}
         </div>

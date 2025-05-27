@@ -9,7 +9,7 @@ import { createSlug } from "../../../component/slug";
 import Image from "next/image";
 import type { Blog } from "../../../store/types";
 
-const SinglePost = () => {
+const PageFile = () => {
   const params = useParams();
   const router = useRouter();
 
@@ -98,4 +98,4 @@ const SinglePost = () => {
   );
 };
 
-export default SinglePost;
+export default PageFile;

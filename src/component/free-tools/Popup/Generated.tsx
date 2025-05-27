@@ -1,8 +1,4 @@
-"use client"
-
-import Cancel from "../../../assets/cancel.svg";
-import Logo from "../../../assets/Pitchdeck Logo.svg";
-import Copy from "../../../assets/copy.svg";
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -58,7 +54,7 @@ const Generated: React.FC<GeneratedProps> = ({ open, data, content, type }) => {
       <div className="w-[100vw] h-[100vh] flex items-center justify-center bg-overlay fixed top-0 left-0 z-20">
         <div className="w-[90%] max-w-[499px] flex flex-col gap-6 p-6 rounded-[12px] bg-white border-[rgb(232,232,234)] border">
           <Image
-            src={Cancel}
+            src={"/assets/cancel.svg"}
             alt="Close"
             width={24}
             height={24}
@@ -66,7 +62,7 @@ const Generated: React.FC<GeneratedProps> = ({ open, data, content, type }) => {
             onClick={close}
           />
           <div>
-            <Image src={Logo} alt="Logo" width={120} height={24} className="w-fit h-6 mb-4" />
+            <Image src={"/assets/Pitchdeck Logo.svg"} alt="Logo" width={120} height={24} className="w-fit h-6 mb-4" />
             <p className="text-[#0B0B00] text-24 font-bold">
               Your {data.formType} has been generated successfully
             </p>
@@ -86,7 +82,7 @@ const Generated: React.FC<GeneratedProps> = ({ open, data, content, type }) => {
               onClick={handleCopy}
               className={`${buttonStyles} w-full tablet:w-fit inline-flex items-center justify-center py-[6px] cursor-pointer`}
             >
-              <Image src={Copy} alt="Copy content" width={20} height={20} className="w-5 h-5 mr-1" />
+              <Image src={"/assets/copy.svg"} alt="Copy content" width={20} height={20} className="w-5 h-5 mr-1" />
               <span className="text-[#0B0B00] text-14 font-medium">
                 Copy content
               </span>

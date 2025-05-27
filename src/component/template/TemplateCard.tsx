@@ -27,7 +27,7 @@ const TemplateCard: React.FC<TemplateCardProps> = ({ template }) => {
           alt="Template deck"
           src={template?.templateCoverImageUrl}
           height={240}
-          style="w-full max-h-[240px]"
+          style="w-full h-[240px]"
         />
 
         <div className="p-3 laptop:p-[14px] desktop:p-4 bg-white">

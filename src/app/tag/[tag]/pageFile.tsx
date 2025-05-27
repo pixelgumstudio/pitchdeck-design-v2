@@ -1,37 +1,25 @@
-"use client"
-import CategoryHero from "../../../sections/Category/CategoryHero";
-import CategoryContent from "../../../sections/Category/CategoryContent";
+"use client";
 import { useParams } from "next/navigation";
 import Testimonials from "../../../sections/Testimonials";
-import { useEffect, useState } from "react";
-import { categories } from "../../../lib/category";
+import TagsContent from "@/sections/Tags/TagsContent";
+import TagsHero from "@/sections/Tags/TagsHero";
 
-type CategoryType = {
-  title: string;
-  desc: string;
-  tag: string;
-};
 
 const PageFile = () => {
+
   const params = useParams();
-  const title = typeof params.category === "string" ? params.category : "";
 
-  const [, setTag] = useState<CategoryType | null>(null);
+  const tagParam: string = typeof params.tag === "string" ? params.tag : "";
 
-  useEffect(() => {
-    const found = categories.find(
-      (cat) => cat.title.toLowerCase() === title.replace(/-/g, " ")
-    );
-    if (found) setTag(found);
-  }, [title]);
+
+  
 
   return (
-
-      <div className="mt-[60px]">
-        <CategoryHero title={title} />
-        <CategoryContent title={title} />
-        <Testimonials />
-      </div>
+    <div className="mt-[60px]">
+       <TagsHero title={tagParam}/>
+       <TagsContent title={tagParam}/>
+      <Testimonials />
+    </div>
   );
 };
 

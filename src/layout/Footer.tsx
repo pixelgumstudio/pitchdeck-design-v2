@@ -35,7 +35,7 @@ const Footer = () => {
             {tags.map((tag, i) => (
               <Link
                 key={`tag-${i}`}
-                href={`/tag/${createSlug(tag.title)}`}
+                href={`/tag/${createSlug(tag.tag)}`}
                 className="text-[16px] font-light leading-[22px] text-[#2E2E27]"
               >
                 {tag.title}
@@ -63,8 +63,8 @@ const Footer = () => {
 
               <div className="flex flex-col gap-4 whitespace-nowrap">
                 <p className="text-[16px] font-bold leading-[22px] text-[#2E2E27]">LEGAL</p>
-                <Link href="/terms" className="text-[16px] font-light leading-[22px] text-[#2E2E27]">Terms and Conditions</Link>
-                <Link href="/policy" className="text-[16px] font-light leading-[22px] text-[#2E2E27]">Privacy policy</Link>
+                <Link href="/generate-terms" className="text-[16px] font-light leading-[22px] text-[#2E2E27]">Terms and Conditions</Link>
+                <Link href="/generate-policy" className="text-[16px] font-light leading-[22px] text-[#2E2E27]">Privacy policy</Link>
               </div>
             </div>
           </div>

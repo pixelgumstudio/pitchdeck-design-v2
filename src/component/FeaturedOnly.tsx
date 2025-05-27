@@ -29,8 +29,9 @@ const FeaturedOnly: React.FC<FeaturedProps> = ({ image, title, desc, link }) => 
         <LoadImage
           alt="Featured Images"
           src={typeof image === "string" ? image : image.src}
-          height={undefined}
-          style="w-full max-w-[407px] h-full max-h-[289px] mx-auto"
+          height={289}
+          style="w-full max-w-[407px] h-[289px] mx-auto"
+          
         />
         {hover && <CardOverlay link={link} />}
       </div>

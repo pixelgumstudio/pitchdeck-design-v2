@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Select from "../../../assets/select.svg";
 import Image from "next/image";
 import { inputStyles, selectStyles } from "../../classes/styles";
 
@@ -151,7 +150,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ address, error }) => {
             ))}
           </select>
           <Image
-            src={Select}
+            src={"/assets/select.svg"}
             alt="Drop down"
             width={24}
             height={24}
@@ -181,7 +180,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ address, error }) => {
             ))}
           </select>
           <Image
-            src={Select}
+            src={"/assets/select.svg"}
             alt="Drop down"
             width={24}
             height={24}
@@ -225,7 +224,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ address, error }) => {
             ))}
           </select>
           <Image
-            src={Select}
+            src={"/assets/select.svg"}
             alt="Drop down"
             width={24}
             height={24}

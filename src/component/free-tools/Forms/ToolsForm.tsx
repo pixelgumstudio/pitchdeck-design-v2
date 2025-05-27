@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState, ChangeEvent } from "react";
 import AddressForm from "./AutoComplete";
-import Select from "../../../assets/select.svg";
 import Image from "next/image";
 import { inputStyles, selectStyles } from "../../classes/styles";
 
@@ -77,7 +76,6 @@ export default function ToolsForm({ response, formType, error }: ToolsFormProps)
 
   useEffect(() => {
     response(data);
-    // console.log(data)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
@@ -157,7 +155,7 @@ export default function ToolsForm({ response, formType, error }: ToolsFormProps)
               ))}
             </select>
             <Image
-              src={Select}
+              src={"/assets/select.svg"}
               alt="Drop down"
               width={24}
               height={24}

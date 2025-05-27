@@ -9,11 +9,12 @@ import type { Pitch, Template } from "../../store/types";
 
 type DynamicListComponentProps = {
   loggedIn: boolean;
+  loading: boolean;
 };
 
 type ListItem = Pitch | Template;
 
-const DynamicListComponent = ({ loggedIn }: DynamicListComponentProps) => {
+const DynamicListComponent = ({ loggedIn, loading }: DynamicListComponentProps) => {
   const { templates, pitches } = useStore();
   const [array, setArray] = useState<Pitch[]>([]);
 
@@ -44,32 +45,38 @@ const DynamicListComponent = ({ loggedIn }: DynamicListComponentProps) => {
     shuffleArray();
   }, [pitches]);
 
+  if (loading) {
+    return (
+      <>
+        {[1, 2, 3].map((card) => (
+          <SkeletonCard key={card} />
+        ))}
+      </>
+    );
+  }
+
   if (!pitches || pitches.length === 0) {
     return <EmptyPitch />;
   }
 
   return (
     <>
-      {mappedArray.length === 0
-        ? [1, 2, 3].map((card) => <SkeletonCard key={card} />)
-        : mappedArray.map((item, index) => {
-            const shouldShow = !loggedIn ? index <= 11 : true;
-            if (!shouldShow || typeof item !== "object") return null;
+      {mappedArray.map((item, index) => {
+        const shouldShow = !loggedIn ? index <= 11 : true;
+        if (!shouldShow || typeof item !== "object") return null;
 
-            // If the item has a "cost" property, it's a Template, otherwise a Pitch
-            const isTemplate = "cost" in item;
+        const isTemplate = "cost" in item;
 
-            return (
-              <div key={index}>
-                {isTemplate ? (
-                  <TemplateCard template={item as Template} />
-                ) : (
-                  <PitchCard pitch={item as Pitch} />
-                )}
-              </div>
-            );
-          })}
-      {/* <GenerateSitemap templates={templates} blogs={null} pitches={pitches} /> */}
+        return (
+          <div key={index}>
+            {isTemplate ? (
+              <TemplateCard template={item as Template} />
+            ) : (
+              <PitchCard pitch={item as Pitch} />
+            )}
+          </div>
+        );
+      })}
     </>
   );
 };

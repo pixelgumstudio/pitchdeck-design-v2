@@ -4,12 +4,12 @@ import Image, { StaticImageData } from "next/image";
 
 type ImageStackProps = {
   images: (string | StaticImageData)[];
-  interval?: number; // Time interval for image change (default is 3000ms)
+  interval?: number;
 };
 
 const ImageStack: React.FC<ImageStackProps> = ({ images, interval = 3000 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const visibleImagesCount = 2; // Number of images to show behind the top one
+  const visibleImagesCount = 2;
 
   useEffect(() => {
     const changeImage = setInterval(() => {
@@ -25,24 +25,31 @@ const ImageStack: React.FC<ImageStackProps> = ({ images, interval = 3000 }) => {
         const positionOffset = (index - currentImageIndex + images.length) % images.length;
         const isVisible = positionOffset < visibleImagesCount;
 
+        const scale = 1 - positionOffset * 0.05;
+        const zIndex = images.length - positionOffset;
+        const bottom = isVisible ? `-${positionOffset * 12}px` : `-${visibleImagesCount * 5}px`;
+        const opacity = isVisible ? 1 : 0;
+
         return (
-          <Image
+          <div
             key={`${image}-${index}`}
-            src={image}
-            alt={`Slide ${index}`}
-            fill
-            className={`aspect-[1.78/1] rounded-2xl absolute w-full max-w-[458px] transition-all duration-500 ease-in-out
-              ${positionOffset === 0 ? 'transform scale-110 z-10 opacity-100' : 'opacity-80'}`}
+            className="absolute w-full h-full transition-all duration-500 ease-in-out"
             style={{
               left: '50%',
-              transform: `translateX(-50%) scale(${1 - positionOffset * 0.06})`,
-              zIndex: images.length - positionOffset,
-              bottom: isVisible ? `-${positionOffset * 12}px` : `-${visibleImagesCount * 5}px`,
-              opacity: isVisible ? 1 : 0,
-              objectFit: "cover",
+              transform: `translateX(-50%) scale(${scale})`,
+              zIndex,
+              bottom,
+              opacity,
             }}
-          
-          />
+          >
+            <Image
+              src={image}
+              alt={`Slide ${index}`}
+              fill
+              className="rounded-2xl object-cover"
+              priority={index === currentImageIndex}
+            />
+          </div>
         );
       })}
     </div>

@@ -3,7 +3,7 @@ import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import axios from "./../lib/axios";
 import { createSlug } from "./../component/slug";
-import type { StoreState, Store, Pitch, User, Tag } from "./types";
+import type { StoreState, Store, Pitch, User } from "./types";
 
 const initialState: StoreState = {
   loading: false,
@@ -15,7 +15,6 @@ const initialState: StoreState = {
   showLogin: false,
   showData: false,
   share: false,
-  tags: [],
   images: [],
   pitch: {
     _id: "",
@@ -132,18 +131,7 @@ export const useStore = create<Store>()(
       }
     },
     
-    setTags: ({ tags }: { tags?: Tag[] }) => {
-  if (!Array.isArray(tags)) return; // SAFEST check
 
-  const uniqueMap = new Map<string, Tag>();
-  for (const t of tags) {
-    if (!uniqueMap.has(t.tag)) {
-      uniqueMap.set(t.tag, t);
-    }
-  }
-console.log("Unique Tags: ", Array.from(uniqueMap.values()));
-  set({ tags: Array.from(uniqueMap.values()) });
-},
 
   }))
 );

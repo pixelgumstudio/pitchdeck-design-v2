@@ -1,3 +1,10 @@
+export interface PageInterface {
+  title: string,
+  description: string,
+  url: string,
+  image: string,
+  }
+
 export interface Pitch {
   _id: string;
   title: string;
@@ -46,7 +53,6 @@ export interface StoreState {
   showLogin: boolean;
   showData: boolean;
   share: boolean;
-  tags: Tag[];
   images: string[];
   pitch: Pitch;
   pitches: Pitch[];
@@ -100,7 +106,6 @@ export interface Store extends StoreState {
   setAddress: (address: string) => void;
   setShare: (response: boolean) => void;
   setCount: (count: number) => void;
-  setTags: (tags: Tag[]) => void;
   setImages: (images: string[]) => void;
   getId: (title: string) => Promise<void>;
   getBlogId: (id: string) => void;
