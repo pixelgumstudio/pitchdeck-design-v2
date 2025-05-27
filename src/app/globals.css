@@ -1,15 +1,98 @@
 @import "tailwindcss";
 
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities;  */
+@font-face {
+  font-family: "Space";
+  src: local("Space"),
+    url("./font/SpaceGrotesk-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@theme {
+  --breakpoint-small: 375px;
+  --breakpoint-tablet: 576px;
+  --breakpoint-ipad: 768px;
+  --breakpoint-laptop: 1024px;
+  --breakpoint-desktop: 1280px;
+
+    --container-big: 280px;
+    --container-large: 504px;
+
+    
+
+  --font-display: "Space", "sans-serif";
+
+  --text-tiny: 0.625rem;
+  --text-tiny--line-height: 1.5rem;
+  --text-tiny--letter-spacing: 0.125rem;
+  --text-tiny--font-weight: 500;
+  --text-12: 12px;
+  --text-12-line-height: 16px;
+  --text-14: 14px;
+  --text-14--line-height: 18px;
+  --text-16: 16px;
+  --text-16--line-height: 22px;
+  --text-20: 20px;
+  --text-20--line-height: 28px;
+  --text-20--letter-spacing: -0.8px;
+  --text-24: 24px;
+  --text-24--line-height: 32px;
+  --text-24--letter-spacing: -0.96px;
+  --text-32: 32px;
+  --text-32--line-height: 39px;
+  --text-32--letter-spacing: -1px;
+  --text-40: 40px;
+  --text-40--line-height: 48.6px;
+  --text-40--letter-spacing: -1.6px;
+  --text-48: 48px;
+  --text-48--line-height: 57.6px;
+  --text-48--letter-spacing: -1px;
+  --text-64: 64px;
+  --text-64--line-height: 72px;
+  --text-64--letter-spacing: -2px;
+
+
+  --color-myGreen-400: #21AB68;
+  --color-green-500: #3E7B52;
+  --color-green-400: #21AB68;
+  --color-grey-100: #E8E8EA;
+  --color-grey-800: #0B0B00;
+  --color-error: #E03C00;
+  --color-borderDefault: #E8E8EA;
+  --color-alabaster: #F8F8F1;
+  --color-borderBgHover: #F9F9F9;
+  --color-disabledButton: linear-gradient(180deg, rgba(0, 12, 20, 0.00) 3.13%, rgba(0, 12, 20, 0.03) 96.87%), var(--white, #FFF);
+
+
+  --shadow-primary: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-navbarLink:
+    0px 0.5px 0px 0px rgba(3, 7, 18, 0.16), 0px 0.25px 0px 0px rgba(3, 7, 18, 0.16), 0px 1.75px 0px 0px rgba(255, 255, 255, 0.16) inset;
+  --shadow-backButton:
+    0px 0.5px 0px 0px rgba(3, 7, 18, 0.16), 0px 0.25px 0px 0px rgba(3, 7, 18, 0.16), 0px 1.75px 0px 0px rgba(255, 255, 255, 0.16) inset;
+  --shadow-dropdown:
+    0px 8px 16px 0px rgba(3, 7, 18, 0.08), 0px 0px 0px 1px rgba(3, 7, 18, 0.08);
+  --shadow-greenButton:
+    0px 0.5px 0px 0px rgba(3, 7, 18, 0.16), 0px 0.25px 0px 0px rgba(3, 7, 18, 0.16), 0px 1.75px 0px 0px rgba(255, 255, 255, 0.16) inset;
+  --shadow-buttonError: 0px 0px 0px 3px rgba(225, 29, 72, 0.15);
+  --shadow-buttonDefault:
+    0px 0.5px 0px 0px rgba(3, 7, 18, 0.16), 0px 0.25px 0px 0px rgba(3, 7, 18, 0.16);
+  --shadow-buttonFocus: 0px 0px 0px 3px rgba(59, 130, 246, 0.20);
+  --shadow-supportButton:
+    0px 0.25px 0px 0px rgba(3, 7, 18, 0.16), 0px 0.5px 0px 0px rgba(3, 7, 18, 0.16);
+  --shadow-shareCard:
+    0px 0px 0px 1px rgba(3, 7, 18, 0.08), 0px 1px 2px -1px rgba(3, 7, 18, 0.08), 0px 2px 4px 0px rgba(3, 7, 18, 0.04);
+  --inset-shadow-shareLinks:
+    0px 1.75px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0.25px 0px 0px rgba(3, 7, 18, 0.16), 0px 0.5px 0px 0px rgba(3, 7, 18, 0.16),
+}
+
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +103,43 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: Space, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.singlePost {
+  line-height: 24px;
+}
+
+.subcribe_button {
+  width: 100%;
+}
+
+@media screen and (min-width: 576px) {
+  .last-test {
+    flex-direction: row !important;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .last-test {
+    flex-direction: column !important;
+  }
+
+  .pricingCards {
+    display: flex;
+  }
+
+  .subcribe_button {
+    width: 140px;
+  }
 }
