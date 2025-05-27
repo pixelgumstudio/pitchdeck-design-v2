@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { useStore } from "../store/useStore";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { loadTemplates } from "../lib/functions";
 import TemplateCard from "../component/template/TemplateCard";
 
@@ -9,11 +9,14 @@ const Discover = () => {
   const { fetchTemplates, templates, setIsComponentLoading } = useStore();
 
   // Fetch All Templates
-  const { data: loadedTemplates, isLoading } = useQuery("templates", loadTemplates);
+  const { data: loadedTemplates, isLoading } = useQuery({
+    queryKey: ["templates"],
+    queryFn: loadTemplates,
+  });
 
   useEffect(() => {
     setIsComponentLoading(isLoading);
-    if (loadedTemplates) {
+    if (Array.isArray(loadedTemplates)) {
       fetchTemplates(loadedTemplates);
     }
   }, [fetchTemplates, setIsComponentLoading, isLoading, loadedTemplates]);

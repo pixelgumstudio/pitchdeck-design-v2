@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import Loading from '../../component/LoadingComponent';
 import CategoryArray from '../../component/CategoryArray';
 import { useStore } from '../../store/useStore';
@@ -23,12 +23,17 @@ const CategoryContent: React.FC<CategoryContentProps> = ({ title }) => {
   const { fetchTemplates, setIsComponentLoading, fetchCategory, componentLoading } = useStore();
 
   // Fetch Pitch based on query
-  const { data: loadedCategory, isLoading } = useQuery(['category', tag], () => loadByCategory({ category: tag }), {
+  const { data: loadedCategory, isLoading } = useQuery({
+    queryKey: ['category', tag],
+    queryFn: () => loadByCategory({ category: tag }),
     enabled: !!tag,
   });
 
   // Fetch All Templates
-  const { data: loadedTemplates } = useQuery('templates', loadTemplates);
+  const { data: loadedTemplates } = useQuery({
+    queryKey: ['templates'],
+    queryFn: loadTemplates,
+  });
 
   useEffect(() => {
     setIsComponentLoading(isLoading);

@@ -4,7 +4,7 @@ import PitchCard from "../../component/pitchdeck/PitchCard";
 import { useParams } from "next/navigation";
 import { createSlug } from "../../component/slug";
 import axios from "../../lib/axios";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 
 type FooterPitchesProps = {
@@ -32,7 +32,10 @@ const loadPitches = async (): Promise<Pitch[]> => {
 export default function FooterPitches({ pitchTag }: FooterPitchesProps) {
   const params = useParams();
   const [array, setArray] = useState<Pitch[]>([]);
-  const { data: pitches } = useQuery("pitches", loadPitches);
+  const { data: pitches } = useQuery({
+    queryKey: ["pitches"],
+    queryFn: loadPitches,
+  });
 
   // Responsive: show 6 on large screens, 4 on small
   const [maxCards, setMaxCards] = useState(4);
