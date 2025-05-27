@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from 'react';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import TemplateCard from '@/component/template/TemplateCard';
 import SkeletonCard from '@/component/SkeletonCard';
 import EmptyPitch from '@/component/EmptyPitch';
@@ -12,7 +12,10 @@ const TemplateContent: React.FC = () => {
   const { fetchTemplates, templates, setIsComponentLoading } = useStore();
 
   // Fetch templates with React Query
-  const { data: loadedTemplates, isLoading } = useQuery('templates', loadTemplates);
+  const { data: loadedTemplates, isLoading } = useQuery({
+    queryKey: ['templates'],
+    queryFn: loadTemplates,
+  });
 
   useEffect(() => {
     setIsComponentLoading(isLoading);

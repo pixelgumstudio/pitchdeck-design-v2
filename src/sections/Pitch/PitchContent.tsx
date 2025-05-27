@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import SearchPitch from "../../component/pitchdeck/SearchPitch";
 import DynamicListComponent from "../../component/pitchdeck/PitchAndTemplateArray";
 import { useStore } from "../../store/useStore";
@@ -36,12 +36,21 @@ const PitchContent: React.FC<PitchContentProps> = ({ loggedIn }) => {
   const search = (res: string) => setSearch(res);
 
   // Fetch Pitch based on query
-  const { data: loadedPitches, isLoading } = useQuery("pitches", loadPitches);
+  const { data: loadedPitches, isLoading } = useQuery({
+    queryKey: ["pitches"],
+    queryFn: loadPitches,
+  });
 
   // Fetch All Templates
-  const { data: loadedTemplates } = useQuery("templates", loadTemplates);
+  const { data: loadedTemplates } = useQuery({
+    queryKey: ["templates"],
+    queryFn: loadTemplates,
+  });
 
-  const { data: loadedTags } = useQuery("tags", loadTags);
+  const { data: loadedTags } = useQuery({
+    queryKey: ["tags"],
+    queryFn: loadTags,
+  });
   const [cookies] = useCookies(["pitch", "isLogged"]);
 
   useEffect(() => {
