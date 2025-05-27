@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import Loading from '../../component/LoadingComponent';
 import TagsArray from '../../component/TagsArray';
 import { useStore } from '../../store/useStore';
@@ -23,10 +23,16 @@ const TagsContent: React.FC<TagsContentProps> = ({ title }) => {
   const { fetchTemplates, setIsComponentLoading, fetchPitches, componentLoading } = useStore();
 
   // Fetch Pitch based on query
-  const { data: loadedPitches, isLoading } = useQuery('pitches', loadPitches);
+  const { data: loadedPitches, isLoading } = useQuery({
+    queryKey: ['pitches'],
+    queryFn: loadPitches,
+  });
 
   // Fetch All Templates
-  const { data: loadedTemplates } = useQuery('templates', loadTemplates);
+  const { data: loadedTemplates } = useQuery({
+    queryKey: ['templates'],
+    queryFn: loadTemplates,
+  });
 
   useEffect(() => {
     setIsComponentLoading(isLoading);
