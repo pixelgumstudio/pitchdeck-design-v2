@@ -29,7 +29,13 @@ const PageFile: React.FC = () => {
           onClick={() => router.back()}
           type="button"
         >
-          <Image src={"/assets/back.svg"} alt="back button" width={24} height={24} className="" />
+          <Image
+            src={"/assets/back.svg"}
+            alt="back button"
+            width={24}
+            height={24}
+            className=""
+          />
         </button>
       </div>
 
@@ -38,13 +44,13 @@ const PageFile: React.FC = () => {
           {currentWebsite && (
             <div className="grid gap-6 laptop:grid-cols-5 laptop:gap-8">
               <div className="laptop:col-span-2">
-               <Image
+                <Image
                   src={currentWebsite.image}
                   alt={currentWebsite.title}
                   width={264}
                   height={278}
                   className="w-full h-auto max-h-[574px]"
-                  style={{ objectFit: "contain" }}
+                  style={{ objectFit: "none" }}
                   priority
                 />
               </div>
@@ -54,8 +60,14 @@ const PageFile: React.FC = () => {
                 </p>
                 <div
                   className="text-16 tablet:text-20 mb-6 tablet:mb-10"
-                  dangerouslySetInnerHTML={{ __html: currentWebsite.description }}
-                ></div>
+                  // dangerouslySetInnerHTML={{
+                  //   __html: currentWebsite.description,
+                  // }}
+                >
+                  <p className="text-[#484848] text-left mb-6 tablet:mb-10">
+                    {currentWebsite.description}
+                  </p>
+                </div>
                 <a
                   href={currentWebsite.url}
                   target="_blank"
