@@ -1,6 +1,6 @@
 import PageFile from './pageFile';
 import { fetchPagesBySlug } from '@/lib/fetchData';
-import type { Metadata, ResolvingMetadata } from 'next';
+import type { Metadata } from 'next';
 
 type Props = {
   params: { pitch: string };
