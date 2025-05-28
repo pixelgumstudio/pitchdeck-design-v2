@@ -14,8 +14,7 @@ const PitchCard: React.FC<PitchCardProps> = ({ pitch }) => {
   return (
     <Link
       href={{
-        pathname: `/pitch/${createSlug(pitch?.title)}`,
-        query: { id: pitch._id },
+        pathname: `/pitch/${createSlug(pitch?.title)}`
       }}
       scroll={false}
     >

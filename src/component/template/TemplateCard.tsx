@@ -17,8 +17,7 @@ const TemplateCard: React.FC<TemplateCardProps> = ({ template }) => {
   return (
     <Link
       href={{
-        pathname: `/template/${createSlug(template.name)}`,
-        query: { id: template._id },
+        pathname: `/template/${createSlug(template.name)}`
       }}
       scroll={false}
     >

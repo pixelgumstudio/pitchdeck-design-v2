@@ -1,5 +1,5 @@
 import PageFile from './pageFile';
-import { fetchTemplateBySlug } from '@/lib/fetchData';
+import { fetchPagesBySlug } from '@/lib/fetchData';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,21 +11,21 @@ function toTitleCase(str: string) {
     .join(' ');
 }
 
-export async function generateMetadata({ params }: { params: { template: string } }) {
-  const store = await fetchTemplateBySlug(params.template);
+export async function generateMetadata({ params }: { params: { pitch: string } }) {
+  const store = await fetchPagesBySlug(params.pitch);
 
   if (!store) {
     return {
-      title: 'Page not found',
-      description: 'Sorry, the page you’re looking for does not exist.',
+      title: 'Product not found',
+      description: 'Sorry, the product you’re looking for does not exist.',
     };
   }
 
-  const titleCasedSlug = toTitleCase(params.template);
+  const titleCasedSlug = toTitleCase(params.pitch);
   const category = store?.category || 'Startup';
   const tag = store?.tag || 'Tech';
-  const image = store?.templateCoverImageUrl;
-  const url = `https://pitchdeck.design/template/${params.template}`;
+  const image = store?.coverImageUrl;
+  const url = `https://pitchdeck.design/pitch/${params.pitch}`;
   const fallbackDescription =
     'Browse free pitch deck examples, purchase pitch deck templates, and hire top pitch deck designers. Ideal for startups raising funds.';
   const description =
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: { params: { template: string 
       "@type": "Offer",
       "url": url,
       "priceCurrency": "USD",
-      "price": store?.cost.dollar || "0.00",
+      "price": store?.amountRaised || "0.00",
       "availability": "https://schema.org/InStock"
     }
   };
