@@ -1,15 +1,15 @@
 import PageFile from './pageFile';
 import { fetchPagesBySlug } from '@/lib/fetchData';
-import type { Metadata } from 'next';
+// import type { Metadata } from 'next';
 
-type Props = {
-  params: { pitch: string };
-  searchParams: { [key: string]: string };
-};
+// type Props = {
+//   params: { pitch: string };
+//   searchParams: { [key: string]: string };
+// };
 
 export const dynamic = 'force-dynamic';
 
-function toTitleCase(str: string) {
+function toTitleCase(str) {
   return str
     .toLowerCase()
     .split(/[-_ ]+/)
@@ -17,8 +17,8 @@ function toTitleCase(str: string) {
     .join(' ');
 }
 
-export async function generateMetadata({ params }: Props, 
-): Promise<Metadata> {
+export async function generateMetadata({ params }, 
+) {
     const { pitch } = await params;
 
   const store = await fetchPagesBySlug(pitch);
@@ -92,6 +92,6 @@ export async function generateMetadata({ params }: Props,
   };
 }
 
-export default function Page({ params }: Props) {
+export default function Page({ params }) {
   return <PageFile title={params.pitch} />;
 }
