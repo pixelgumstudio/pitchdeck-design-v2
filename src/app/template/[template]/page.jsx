@@ -3,7 +3,7 @@ import { fetchTemplateBySlug } from '@/lib/fetchData';
 
 export const dynamic = 'force-dynamic';
 
-function toTitleCase(str: string) {
+function toTitleCase(str) {
   return str
     .toLowerCase()
     .split(/[-_ ]+/)
@@ -11,8 +11,9 @@ function toTitleCase(str: string) {
     .join(' ');
 }
 
-export async function generateMetadata({ params }: { params: { template: string } }) {
-  const store = await fetchTemplateBySlug(params.template);
+export async function generateMetadata({ params }) {
+  const { template } = await params;
+  const store = await fetchTemplateBySlug(template);
 
   if (!store) {
     return {
@@ -21,11 +22,11 @@ export async function generateMetadata({ params }: { params: { template: string 
     };
   }
 
-  const titleCasedSlug = toTitleCase(params.template);
+  const titleCasedSlug = toTitleCase(template);
   const category = store?.category || 'Startup';
   const tag = store?.tag || 'Tech';
   const image = store?.templateCoverImageUrl;
-  const url = `https://pitchdeck.design/template/${params.template}`;
+  const url = `https://pitchdeck.design/template/${template}`;
   const fallbackDescription =
     'Browse free pitch deck examples, purchase pitch deck templates, and hire top pitch deck designers. Ideal for startups raising funds.';
   const description =

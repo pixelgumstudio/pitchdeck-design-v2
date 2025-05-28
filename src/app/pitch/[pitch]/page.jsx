@@ -17,8 +17,7 @@ function toTitleCase(str) {
     .join(' ');
 }
 
-export async function generateMetadata({ params }, 
-) {
+export async function generateMetadata({ params }) {
     const { pitch } = await params;
 
   const store = await fetchPagesBySlug(pitch);
@@ -30,11 +29,11 @@ export async function generateMetadata({ params },
     };
   }
 
-  const titleCasedSlug = toTitleCase(params.pitch);
+  const titleCasedSlug = toTitleCase(pitch);
   const category = store?.category || 'Startup';
   const tag = store?.tag || 'Tech';
   const image = store?.coverImageUrl;
-  const url = `https://pitchdeck.design/pitch/${params.pitch}`;
+  const url = `https://pitchdeck.design/pitch/${pitch}`;
   const fallbackDescription =
     'Browse free pitch deck examples, purchase pitch deck templates, and hire top pitch deck designers. Ideal for startups raising funds.';
   const description =
