@@ -18,7 +18,6 @@ function toTitleCase(str: string) {
 }
 
 export async function generateMetadata({ params }: Props, 
-  _parent: ResolvingMetadata
 ): Promise<Metadata> {
     const { pitch } = await params;
 
@@ -93,6 +92,6 @@ export async function generateMetadata({ params }: Props,
   };
 }
 
-export default function Page({ params, searchParams }: Props) {
+export default function Page({ params }: Props) {
   return <PageFile title={params.pitch} />;
 }
