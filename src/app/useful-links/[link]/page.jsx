@@ -4,19 +4,10 @@ import PageFile from './pageFile';
 import { websiteLinks } from "../../../lib/links";
 import { createSlug } from "../../../component/slug";
 
-type WebsiteLink = {
-  title: string;
-  image: string;
-  url: string;
-  description: string;
-  about: string;
-};
-type Props = {
-  params: { link: string };
-};
 
 
-function toTitleCase(str: string) {
+
+function toTitleCase(str) {
   return str
     .toLowerCase()
     .split(/[-_ ]+/)
@@ -24,11 +15,11 @@ function toTitleCase(str: string) {
     .join(' ');
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }) {
     const { link } = await params;
 
  const currentWebsite = websiteLinks.find(
-    (website: WebsiteLink) => createSlug(website.title) === link
+    (website) => createSlug(website.title) === link
   );
 
 
