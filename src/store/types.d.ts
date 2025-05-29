@@ -102,7 +102,6 @@ export interface Store extends StoreState {
   setIsLoading: (status: boolean) => void;
   setIsComponentLoading: (status: boolean) => void;
   setlink: (link: string) => void;
-  setUser: (user: User) => void;
   setAddress: (address: string) => void;
   setShare: (response: boolean) => void;
   setCount: (count: number) => void;
