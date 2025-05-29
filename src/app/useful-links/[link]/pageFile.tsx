@@ -1,7 +1,7 @@
 "use client";
 import { useParams, useRouter } from "next/navigation";
-import { websiteLinks } from "../../../lib/links";
-import { createSlug } from "../../../component/slug";
+import { websiteLinks } from "@/lib/links";
+import { createSlug } from "@/component/slug";
 import Image from "next/image";
 
 type WebsiteLink = {

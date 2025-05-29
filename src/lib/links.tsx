@@ -1,4 +1,11 @@
 export const websiteLinks = [
+   {
+    title: "Pixelgum Studio",
+    description: `We are a Design and Development partner for Startups and Founders. We help companies build products that make impactful differences for customers and help them generate revenue.`,
+  url: "https://www.pixelgumstudio.framer.website",
+    image: "/links/pixelgumstudio.png",
+      about: "We are a design studio and web agency specializing in affordable branding, product design, UI/UX design, web design, Craft CMS, eCommerce, organic SEO, and pitch decks."
+  },
   {
     title: "Tattoo Removal Place",
     description:
@@ -29,4 +36,5 @@ export const websiteLinks = [
     image: "/links/landingvault.webp",
       about: "Explore top landing page design inspiration on Landingvault. Get inspired with curated, high-quality landing page examples."
   },
+ 
 ];

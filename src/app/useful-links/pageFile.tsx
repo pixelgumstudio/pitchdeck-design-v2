@@ -1,5 +1,5 @@
-import LinkCard from "../../component/linksCard";
-import { websiteLinks } from "../../lib/links";
+import LinkCard from "@/component/linksCard";
+import { websiteLinks } from "@/lib/links";
 
 type WebsiteLink = {
   title: string;
@@ -19,8 +19,8 @@ const PageFile: React.FC = () => {
             Some of the links that might be useful for companies
           </p>
         </div>
-        <div className="w-fit mx-auto">
-          <div className="flex flex-wrap gap-8 justify-start">
+        <div className="w-full mx-auto">
+          <div className="grid tablet:grid-cols-2 laptop:grid-cols-3 gap-8 justify-start">
             {websiteLinks.map((website: WebsiteLink) => (
               <LinkCard
                 key={website.title}
