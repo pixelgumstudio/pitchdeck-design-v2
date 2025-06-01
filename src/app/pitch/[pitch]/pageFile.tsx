@@ -99,6 +99,7 @@ export default function PageFile({ title }: { title: string }) {
                       alt={`${pitch.title || 'Pitch Image'} ${index}`}
                       src={image}
                       height={205}
+                       
                       style="w-full h-[205px] tablet:h-[456px] laptop:w-[640px] laptop:h-[537px] desktop:w-[757px]"
                     />
                   ))}

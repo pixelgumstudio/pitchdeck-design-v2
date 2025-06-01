@@ -33,6 +33,7 @@ const LoadImage: React.FC<LoadImageProps> = ({
   blurDataURL="/assets/LoadingImage.webp"
   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
   className="w-full h-full"
+  unoptimized
 />
         )}
       </div>
