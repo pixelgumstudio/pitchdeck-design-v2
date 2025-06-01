@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useMediaQuery } from 'react-responsive'
@@ -10,26 +10,39 @@ import { useRouter, usePathname } from 'next/navigation'
 import { useStore } from '../store/useStore'
 
 const Navbar = () => {
-  const [ , setCookie ] = useCookies(["user", "token", "isLogged"])
+  const [ cookies , setCookie ] = useCookies(["user", "token", "isLogged"])
   const isSmallScreen = useMediaQuery({ query: '(max-width: 1023px)' })
 
   const router = useRouter()
   const pathname = usePathname()
 
-  const { isLogged, user, setlink, setShowLogin } = useStore()
+  const { isLogged, user, setlink, setShowLogin, setUser, setIsLoggedin } = useStore()
   const [visibility, setVisibility] = useState(false)
 
+    // Sync Zustand user and isLogged with cookies
+  useEffect(() => {
+    if (cookies.user) {
+      setUser(cookies.user);
+      setIsLoggedin(true);
+    } else {
+      setUser(user);
+      setIsLoggedin(false);
+    }
+  }, [cookies.user, setUser, setIsLoggedin]);
 
   const toggleNavbar = () => {
     setVisibility(!visibility)
   }
 
   const logout = () => {
-    setCookie("user", "", { path: "/" })
-    setCookie("token", "", { path: "/" })
-    setCookie("isLogged", false, { path: "/" })
-    setlink('/')
-    router.push('/')
+      setCookie("user", "", { path: "/" });
+    setCookie("token", "", { path: "/" });
+    setCookie("isLogged", false, { path: "/" });
+    setUser(user);
+    setIsLoggedin(false);
+    setlink('/');
+    setShowLogin(true);
+    router.push('/');
   }
 
   const login = () => {
