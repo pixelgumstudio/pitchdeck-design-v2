@@ -28,7 +28,7 @@ const LoadImage: React.FC<LoadImageProps> = ({
   alt={alt}
   src={src!}
   fill
-  style={{ objectFit: "cover" }}
+  // style={{ objectFit: "cover" }}
   placeholder="blur"
   blurDataURL="/assets/LoadingImage.webp"
   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
