@@ -6,10 +6,10 @@ const Hero: React.FC = () => {
       <div className="w-full laptop:max-w-[1152px] mx-auto px-4 tablet:px-6 laptop:px-8 xl:px-0 text-center py-[40px] tablet:py-[80px] laptop:py-[100px]">
         <div className="w-full max-w-[288px] tablet:!max-w-[524px] laptop:!max-w-[1000px] mx-auto">
           <h1 className="text-32 font-bold tablet:text-32 laptop:text-64 mb-6">
-            Transform Your Ideas into Compelling Pitch Decks with Ease
+            Pitch Deck Design Agency That Helps You Raise $100bn in funding
           </h1>
           <h2 className="text-[#414143] text-[16px] leading-6 tablet:text-[20px] tablet:leading-[28px] laptop:text-[24px] laptop:leading-8 mb-[40px]">
-            Need expert help? Let&apos;s help you create stunning and effective pitch decks that convert investors!
+            At Pitchdeck.design, we create stunning, investor-ready pitch decks that help startups stand out and secure funding. Whether you&apos;re pre-seed or Series A, our expert design team builds decks that tell your story, impress VCs, and drive results.
           </h2>
           <Link
             href="/make-deck#pricing"
