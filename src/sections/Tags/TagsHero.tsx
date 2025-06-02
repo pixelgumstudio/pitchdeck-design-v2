@@ -15,9 +15,7 @@ const TagsHero: React.FC<TagsHeroProps> = ({ title }) => {
   const [data, setData] = useState<Tag>({ title: "", desc: "" });
 
   useEffect(() => {
-    const found = tags.find(
-      (cat: Tag) => cat.title.toLowerCase() === title.replace(/-/g, ' ')
-    );
+    const found = tags.find(cat => cat.tag.toLowerCase() === title.replace(/-/g, ' '));
     if (found) setData(found);
   }, [title]);
 
