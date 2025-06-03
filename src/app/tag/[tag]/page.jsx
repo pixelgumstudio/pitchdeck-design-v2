@@ -3,8 +3,8 @@ export const dynamic = 'force-dynamic';
 import { tags } from '@/lib/category';
 import PageFile from './pageFile';
 
-export async function generateMetadata({ params }: { params: { tag: string } }) {
-  const tag = params.tag;
+export async function generateMetadata({params}) {
+  const { tag }= await params
 
    const found = tags.find(cat => cat.tag.toLowerCase() === tag.replace(/-/g, ' '));
 
@@ -64,6 +64,10 @@ export async function generateMetadata({ params }: { params: { tag: string } }) 
     },
   };
 }
-export default function Page() {
-  return <PageFile />;
+// export default function Page() {
+//   return <PageFile />;
+// }
+
+export default function Page({ params }) {
+  return <PageFile title={params.tag} />;
 }
